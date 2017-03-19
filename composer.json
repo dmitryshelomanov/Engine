@@ -1,0 +1,15 @@
+{
+    "name": "dima/test-composer",
+    "require": {
+        "symfony/var-dumper": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Engine\\": "core/",
+            "App\\": "app/"
+        },
+        "files": [
+            "core/helpers/functions.php"
+        ]
+    }
+}
