@@ -26,6 +26,7 @@ $validator->make((new Request())->all(), [
     'login.логин' => 'required|min:6',
     'password.пароль' => 'required|min:6'
 ]);
+//min:6|max:12|required|confirmed:login|email|str|int
 ```
 ## Редирект
 > Базовое использвование
@@ -68,6 +69,16 @@ $test->update([
 $test->where()->delete(); // удаление
 
 $test-find($id); // поиск записи по id
+
+$test->count() //количество записей
+
+$test->paginate(2)->get() //пагинация
+
+$test->limit () //лимит
+
+$test->order($field, $method) //сортировка
+
+$test->where()->delete() //удалить
 ```
 ## Авторизация (сессии)
 ```php
