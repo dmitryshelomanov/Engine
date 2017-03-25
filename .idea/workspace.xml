@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d8ebfc2-c012-423c-baeb-c7470604f2a2" name="Default" comment="first">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Controllers/IndexController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Models/Test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Models/Users.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/read.me" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resource/public/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resource/view/index.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/main.php" afterPath="$PROJECT_DIR$/app/routes/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/app.php" afterPath="$PROJECT_DIR$/config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/validate.php" afterPath="$PROJECT_DIR$/config/validate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/Bootstrap.php" afterPath="$PROJECT_DIR$/core/Bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/baseModel/Model.php" afterPath="$PROJECT_DIR$/core/baseModel/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/exception/ExceptionDB.php" afterPath="$PROJECT_DIR$/core/exception/ExceptionDB.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/exception/ExceptionFile.php" afterPath="$PROJECT_DIR$/core/exception/ExceptionFile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/helpers/Auth.php" afterPath="$PROJECT_DIR$/core/helpers/Auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/helpers/Flash.php" afterPath="$PROJECT_DIR$/core/helpers/Flash.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/helpers/functions.php" afterPath="$PROJECT_DIR$/core/helpers/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/request/Request.php" afterPath="$PROJECT_DIR$/core/request/Request.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/routers/Router.php" afterPath="$PROJECT_DIR$/core/routers/Router.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/validate/Validator.php" afterPath="$PROJECT_DIR$/core/validate/Validator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/view/View.php" afterPath="$PROJECT_DIR$/core/view/View.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-    </list>
+    <list default="true" id="1d8ebfc2-c012-423c-baeb-c7470604f2a2" name="Default" comment="first" />
     <ignored path="testComposer.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -171,6 +148,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="testComposer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testComposer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testComposer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resource" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -332,12 +323,12 @@
       <workItem from="1490124260675" duration="4293000" />
       <workItem from="1490187138153" duration="246000" />
       <workItem from="1490437094478" duration="2252000" />
-      <workItem from="1490439428043" duration="384000" />
+      <workItem from="1490439428043" duration="794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111103000" />
+    <option name="totallyTimeSpent" value="111513000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
