@@ -40,6 +40,19 @@ class Flash
     }
 
     /**
+     * Проверка на ключь
+     * @param $key
+     * @return bool
+     */
+    public function has ($key)
+    {
+        if (isset($this->_messages[$key])) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Возврат старой переменной
      * @param $key
      * @return mixed

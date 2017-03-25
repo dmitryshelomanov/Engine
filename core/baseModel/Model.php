@@ -10,7 +10,7 @@ class Model
         $db,
         $query,
         $table;
-
+    public $_nextPage, $_prevPage;
     public $bindings = [
         'select' => [],
         'join' => [],
@@ -19,7 +19,8 @@ class Model
         'order' => [],
         'union' => [],
         'insert' => [],
-        'update' => []
+        'update' => [],
+        'limit' => []
     ];
 
     public function __construct()
@@ -117,15 +118,53 @@ class Model
         $sql .= " FROM {$this->table}";
         $sql .= $this->buildWhere();
         $sql .= $this->buildJoin();
+        $sql .= $this->buildOrder();
+        $sql .= $this->buildLimit();
         return $sql;
     }
 
+    /**
+     * сортировка данных
+     * @param $count
+     * @return Model
+     */
+    public function paginate ($count)
+    {
+        $page = request()->page ? request()->page : '1';
+        $rows = $this->count();
+        $take = ($page - 1) * $count;
+        $allPage = intval(ceil($rows/$count));
+
+        if ($allPage <= $page) {
+            $this->_nextPage = null;
+            $this->_prevPage = $page - 1;
+        } elseif ($take === 0) {
+            $this->_nextPage = $page + 1;
+            $this->_prevPage = null;
+        } else {
+            $this->_nextPage = $page + 1;
+            $this->_prevPage = $page - 1;
+        }
+        return $this->limit($take, $count);
+    }
+
+    /**
+     * количество данных
+     * @return mixed
+     */
+    public function count ()
+    {
+        $query = $this->db->query("SELECT COUNT(*) as count FROM {$this->table}");
+        $row = $query->fetch();
+        return $row['count'];
+    }
     /**
      * Постойка условия
      * @return string
      */
     public function buildWhere()
     {
+        $sql = null;
         if (count($this->bindings['where']) > 0) {
             $sql .= " WHERE ";
             foreach ($this->bindings['where'] as $item) {
@@ -135,6 +174,64 @@ class Model
         }
     }
 
+    /**
+     * лимит 0,0
+     * @param $take
+     * @param $limit
+     * @return $this
+     */
+    public function limit ($take, $limit)
+    {
+        $this->bindings['limit'][] = compact(
+            'take', 'limit'
+        );
+        return $this;
+    }
+
+    /**
+     * постройка лимита
+     * @return string
+     */
+    public function buildLimit ()
+    {
+        if (count($this->bindings['limit']) > 0) {
+            foreach ($this->bindings['limit'] as $item) {
+                $sql .= " LIMIT {$item['take']}, {$item['limit']}";
+            }
+            return $sql;
+        }
+    }
+
+    /**
+     * сортировка
+     * @param $field
+     * @param $param
+     * @return $this
+     */
+    public function order ($field, $param)
+    {
+        $this->bindings['order'][] = compact(
+            'field', 'param'
+        );
+        return $this;
+    }
+
+    /**
+     * остройка сортировки
+     * Обязатеьные параметры для постройки
+     * @return string
+     */
+    public function buildOrder ()
+    {
+        if (count($this->bindings['order']) > 0) {
+            foreach ($this->bindings['order'] as $item) {
+                if ($item['field'] && $item['param']) {
+                    $sql .= " ORDER BY {$item['field']} {$item['param']}";
+                }
+            }
+            return $sql;
+        }
+    }
     /**
      * Постройка джоина
      * @return string
@@ -183,7 +280,7 @@ class Model
         $rs = $this->db->prepare($query);
         $rs->execute();
         if (! $rs) {
-            return (new \Engine\exception\ExceptionDB($rs->errorInfo()));
+            return (new \Engine\exception\ExceptionDB("Ошибка просмотра"));
         }
         while ($row = $rs->fetchObject()) {
             $array[] = $row;
@@ -221,13 +318,14 @@ class Model
     /**
      * Подготовленный запрос
      * @param $query
-     * @return bool|ExceptionDB
+     * @return bool
+     * @throws ExceptionDB
      */
     public function insertPrepare ($query)
     {
         $rs = $this->db->prepare($query);
         if (! $rs->execute($this->bindings['insert']['data'])) {
-            return (new \Engine\exception\ExceptionDB($rs->errorInfo()));
+            throw (new \Engine\exception\ExceptionDB($rs->errorInfo()[2]));
         }
         return true;
     }
@@ -286,4 +384,6 @@ class Model
         }
         return true;
     }
+
+
 }

@@ -9,7 +9,7 @@ class Auth
      * Получение инфи о юзере
      * @return bool
      */
-    public function user ()
+    public static function user ()
     {
         if (isset ($_SESSION['user'])) {
             return (new Users())->find(1);
@@ -20,26 +20,35 @@ class Auth
     /**
      * выход
      */
-    public function logout ()
+    public static function logout ()
     {
         unset($_SESSION['user']);
+        return redirect('/');
     }
 
     /**
-     * регистрация
+     * вход
      * @param $data
      * @return bool|\Engine\exception\ExceptionDB
      */
-    public function attempt ($data)
+    public static function attempt ($data)
     {
-        return (new Users())->insert($data);
+        $user = new Users();
+        $rs = $user->where('login', '=', $data['login'])
+                   ->andWhere('password', '=', $data['password'])
+                   ->get();
+        if (count($rs) > 0) {
+            $_SESSION['user'] = $rs;
+            return redirect('/');
+        }
+        return redirect()->with('message', 'Не верный логин или пароль')->back();
     }
 
     /**
      * Проверка авторизован ли
      * @return bool
      */
-    public function check ()
+    public static function check ()
     {
         if (isset ($_SESSION['user'])) {
             return true;

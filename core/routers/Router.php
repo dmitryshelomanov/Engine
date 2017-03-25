@@ -44,7 +44,7 @@ class Router
             'method'     => $method,
             'url'        => $arguments[0],
             'call'       => $arguments[1],
-            'middleware' => $arguments[2]['middleware']
+            'middleware' => isset($arguments[2]) ? $arguments[2]['middleware'] : null
         ];
     }
 
@@ -52,7 +52,7 @@ class Router
     {
         if (isset ($name)) {
             $middleware = config()->get('app.middleware')[$name];
-            (new $middleware)->handle ();
+            $this->_next = (new $middleware)->handle ();
         }
     }
 
@@ -78,11 +78,10 @@ class Router
                     request()->getRequestMethod () === $v['method']) {
                         $this->middleware($v['middleware']);
                         if ($this->_next === true) {
-                            $this->initRouter($match[0], $v['call']);
+                            return $this->initRouter($match[0], $v['call']);
                         }
-                } else {
-                    echo '404';
                 }
+                echo 'нету такого метода реквеста';
                 break;
             }
         }
@@ -91,7 +90,7 @@ class Router
     public function initRouter ($matches, $call)
     {
         array_shift($matches);
-        if ($call instanceof \Closure) {
+        if (is_callable($call)) {
             return call_user_func_array($call, $matches);
         }
 
@@ -105,6 +104,17 @@ class Router
        if (!  method_exists($class, $method)) {
            throw new \Exception("Метод {$method} класса {$class} не найден");
        }
-        call_user_func_array([$class, $method], $matches);
+       $app = new $class();
+        call_user_func_array(array($app, $method), $matches);
+    }
+
+    public function notFount ()
+    {
+
+    }
+
+    public function notRequestMethods ()
+    {
+
     }
 }

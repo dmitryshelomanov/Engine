@@ -87,3 +87,20 @@
     {
         return \Engine\helpers\Flash::getInstance()->message($key);
     }
+
+    /**
+     * @param $key
+     * @return bool
+     */
+    function has ($key)
+    {
+        return \Engine\helpers\Flash::getInstance()->has($key);
+    }
+
+    /**
+     * @return mixed
+     */
+    function response ()
+    {
+        return app ()->set('response', Engine\response\Response::class)->buildClass('response');
+    }

@@ -68,6 +68,7 @@ class Request
         if (isset($_GET[$name])) {
             return trim($_GET[$name]);
         }
+        return false;
     }
 
     /**
@@ -112,7 +113,7 @@ class Request
      */
     public function hasFile ($name)
     {
-        if (isset($_FILES[$name])) {
+        if ($this->file($name)['name'] !== '' ) {
             return true;
         }
         return false;

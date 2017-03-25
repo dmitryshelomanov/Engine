@@ -1,13 +1,19 @@
 <?php
     namespace Engine\exception;
 
+    use Engine\traits\TException;
+    use Exception;
 
-    class ExceptionFile
+    class ExceptionFile extends Exception
     {
-        protected $alert = "Нету файла в каталоге путь resource/view/";
-        public function __construct($path)
+        use TException;
+        public function __construct($msg)
         {
-            $this->alert .= isset($path[1]) ? $path[0] . '/' . $path[1] . '.php' : $path[0] . '.php';
-            dd($this->alert);
+            $this->writeToFile(
+                "Error message {$msg}\n".
+                "on lines {$this->getLine()} error in {$this->getFile()}\n".
+                "with {$this->getTraceAsString()}\n\n"
+            );
+            die();
         }
     }

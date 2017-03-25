@@ -1,6 +1,7 @@
 <?php
 namespace Engine\validate;
 
+use Engine\request\Request;
 
 class Validator
 {
@@ -15,7 +16,7 @@ class Validator
 
     public function fails ()
     {
-        if (isset($this->_errors)) {
+        if (count ($this->_errors) > 0) {
             return true;
         }
         return false;
@@ -65,6 +66,35 @@ class Validator
     {
         if (strlen($data) < $param) {
             $this->errorsSet($this->attribute($key), $this->_validate['min'] , $param);
+        }
+    }
+
+    public function email ($data, $key)
+    {
+        if (! filter_var($data, FILTER_VALIDATE_EMAIL)) {
+            $this->errorsSet($this->attribute($key), $this->_validate['email']);
+        }
+    }
+
+    public function confirmed ($data, $param, $key)
+    {
+        $request = new Request();
+        if ($request->input($param) !== $request->input($key[0])) {
+            $this->errorsSet($this->attribute($key), $this->_validate['confirmed']);
+        }
+    }
+
+    public function str ($data, $key)
+    {
+        if (preg_match('/([0-9]+)/', $data)) {
+            $this->errorsSet($this->attribute($key), $this->_validate['str']);
+        }
+    }
+
+    public function int ($data, $key)
+    {
+        if (preg_match('/([a-z]+)/i', $data)) {
+            $this->errorsSet($this->attribute($key), $this->_validate['int']);
         }
     }
 

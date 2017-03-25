@@ -11,7 +11,6 @@
             foreach (config()->get ('app.aliases') as $k => $v) {
                 app()->set($k, $v)->createAlias($k, $k);
             }
-            Cors::getCors();
             require 'app/routes/main.php';
             (new Router())->run();
         }

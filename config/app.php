@@ -1,9 +1,10 @@
 <?php
     return [
         "name" => "engine",
+        "debug" => false,
         "db" => [
         	"host" => "localhost",
-        	"dbname" => "lessonPHP",
+        	"dbname" => "tasks",
         	"user" => "root",
         	"password" => ""
         ],
@@ -11,7 +12,7 @@
          * middleware /app/Middleware
          */
         "middleware" => [
-            "auth" => App\Middleware\Auth::class
+            "auth" => \App\Middleware\Auth::class,
         ],
         /**
          * Алиасы для автозагрузки кдлассов
