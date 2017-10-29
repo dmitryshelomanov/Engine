@@ -4,7 +4,7 @@
         "debug" => false,
         "db" => [
         	"host" => "localhost",
-        	"dbname" => "tasks",
+        	"dbname" => "test",
         	"user" => "root",
         	"password" => ""
         ],

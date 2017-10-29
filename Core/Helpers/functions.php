@@ -3,7 +3,7 @@
      * Получение инстана контейрера
      * @return \Engine\container\ServiceContainer|null
      */
-    function app ()
+    function app()
     {
         return Engine\Container\ServiceContainer::getInstance();
     }
@@ -12,9 +12,9 @@
      * получение конфигов
      * @return mixed
      */
-    function config ()
+    function config()
     {
-        return app ()->registerSingleton('Config', Engine\Config\Repository::class)
+            return app()->register('Config', Engine\Config\Repository::class)
                      ->make('Config');
     }
 
@@ -22,9 +22,9 @@
      * класс Redirect
      * @return mixed
      */
-    function request ()
+    function request()
     {
-        return app ()->make('Request');
+        return app()->make('Request');
     }
 
     /**
@@ -43,9 +43,9 @@
      * @param array $data
      * @return mixed
      */
-    function view ($path, $data = [])
+    function view($path, $data = [])
     {
-        return app ()->make('View')
+        return app()->make('View')
                      ->generate($path, $data);
     }
 
@@ -53,7 +53,7 @@
      * быстрый доступ к папке public
      * @param $param
      */
-    function asset ($param)
+    function asset($param)
     {
         $path = "/resource/public/";
         echo $path . $param;
@@ -64,9 +64,9 @@
      * @param null $url
      * @return mixed
      */
-    function redirect ($url = null)
+    function redirect($url = null)
     {
-        return app ()->make('Redirect')
+        return app()->make('Redirect')
                      ->redirect($url);
     }
 
@@ -75,9 +75,9 @@
      * @param $key
      * @return mixed
      */
-    function old ($key)
+    function old($key)
     {
-        return app()->registerSingleton('Flash', \Engine\helpers\Flash::class)
+        return app()->register('Flash', \Engine\helpers\Flash::class)
                     ->make('Flash')
                     ->old($key);
     }
@@ -86,9 +86,9 @@
      * @param $key
      * @return mixed
      */
-    function message ($key)
+    function message($key)
     {
-        return app()->registerSingleton('Flash', \Engine\helpers\Flash::class)
+        return app()->register('Flash', \Engine\helpers\Flash::class)
                     ->make('Flash')
                     ->old($key);
     }
@@ -97,9 +97,9 @@
      * @param $key
      * @return bool
      */
-    function has ($key)
+    function has($key)
     {
-        return app()->registerSingleton('Flash', \Engine\helpers\Flash::class)
+        return app()->register('Flash', \Engine\helpers\Flash::class)
                     ->make('Flash')
                     ->has($key);
     }
@@ -107,7 +107,7 @@
     /**
      * @return mixed
      */
-    function response ()
+    function response()
     {
-        return app ()->make('Response');
+        return app()->make('Response');
     }

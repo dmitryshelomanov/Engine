@@ -1,44 +1,17 @@
 <?php
 namespace Engine\Container;
 
-use Engine\Contracts\Container\IServiceContainer;
+use Engine\Container\Helpers;
+use Engine\traits\Singleton;
 
-class ServiceContainer extends Helper implements IServiceContainer
+class ServiceContainer extends Helpers
 {
-    protected static $instance = null;
+    use Singleton;
 
-    protected function __construct(){}
-
-    public static function getInstance ()
+    public function register($name, $class)
     {
-        if (is_null(self::$instance)) {
-            self::$instance = new static();
-        }
-        return  self::$instance;
-    }
-
-    public function register ($name, $class = '')
-    {
-        if ($this->bindings[$name]) {
-            return $this;
-        }
-        if (!$class) {
-            $this->setClassWithoutName($name, false);
-        } else {
-            $this->setClassWithName($name, $class, false);
-        }
-        return $this;
-    }
-
-    public function registerSingleton ($name, $class = '')
-    {
-        if ($this->bindings[$name]) {
-            return $this;
-        }
-        if (!$class) {
-            $this->setClassWithoutName($name, true);
-        } else {
-            $this->setClassWithName($name, $class, true);
+        if (empty($this->bindings[$name])) {
+            $this->bindings[$name] = $class;
         }
         return $this;
     }

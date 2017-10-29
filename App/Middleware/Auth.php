@@ -2,6 +2,7 @@
 namespace App\Middleware;
 
 use Engine\Request\Request;
+use App\Models\Users;
 
 class Auth
 {
