@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d8ebfc2-c012-423c-baeb-c7470604f2a2" name="Default" comment="first">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+    <list default="true" id="1d8ebfc2-c012-423c-baeb-c7470604f2a2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Controllers/IndexController.php" afterPath="$PROJECT_DIR$/App/Controllers/IndexController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Middleware/Auth.php" afterPath="$PROJECT_DIR$/App/Middleware/Auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/routes/main.php" afterPath="$PROJECT_DIR$/App/routes/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Config/app.php" afterPath="$PROJECT_DIR$/Config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Bootstrap.php" afterPath="$PROJECT_DIR$/Core/Bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Container/ServiceContainer.php" afterPath="$PROJECT_DIR$/Core/Container/ServiceContainer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Helpers/functions.php" afterPath="$PROJECT_DIR$/Core/Helpers/functions.php" />
     </list>
     <ignored path="testComposer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -387,12 +379,20 @@
       <workItem from="1490439428043" duration="1256000" />
       <workItem from="1490544635090" duration="19000" />
       <workItem from="1492697994279" duration="2766000" />
-      <workItem from="1509276151130" duration="5774000" />
+      <workItem from="1509276151130" duration="5850000" />
     </task>
+    <task id="LOCAL-00001" summary="first">
+      <created>1509283468655</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1509283468655</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120534000" />
+    <option name="totallyTimeSpent" value="120610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
